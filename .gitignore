@@ -1,0 +1,10 @@
+TODO.md
+src/backend/data
+.env
+config.yaml
+.DS_Store
+__pycache__/
+.python-version
+pyproject.toml
+uv.lock
+.venv/
