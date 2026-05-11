@@ -10,6 +10,7 @@ from google.cloud import storage
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
+
 def main() -> None:
     load_dotenv()
     bucket_name = os.environ.get("GCS_BUCKET_NAME")

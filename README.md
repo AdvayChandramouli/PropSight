@@ -3,8 +3,8 @@ A machine learning pipeline for predicting real estate prices or rental yields u
 
 Python (Pandas, NumPy, Scikit-Learn, XGBoost), Flask or FastAPI, Docker, Kubernetes, GitHub Actions, optional React for dashboard, PySpark
 
-# Activate Venv:
-`source .venv/bin/activate`
-
-uv add <package_name>
-uv remove <package_name>
+# Getting Started
+- This project uses Astral's suite of dev tools (uv, ruff, ty):
+    `source .venv/bin/activate`
+    `uv add <package_name>`
+    `uv remove <package_name>`
