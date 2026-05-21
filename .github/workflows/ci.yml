@@ -1,11 +1,13 @@
 name: CI
+
 on:
   push:
     branches: [main]
   pull_request:
 
 jobs:
-  quality:
+  backend:
+    name: Backend (Python)
     runs-on: ubuntu-latest
 
     steps:
@@ -22,13 +24,40 @@ jobs:
         run: uv sync --all-extras --dev
 
       - name: Check formatting
-        run: uv run ruff format --check .
+        run: uv run ruff format --check src/backend
 
       - name: Lint
-        run: uv run ruff check .
+        run: uv run ruff check src/backend
 
       - name: Type check
-        run: uv run ty check
+        run: uv run ty check src/backend
 
       - name: Run tests
         run: uv run pytest
+
+  frontend:
+    name: Frontend (TypeScript)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/frontend
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: src/frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build

@@ -14,6 +14,19 @@ dependencies = [
 [dependency-groups]
 dev = [
     "ipython>=9.0.0",
+    "pre-commit>=4.0.0",
+    "pytest>=8.0.0",
     "ruff>=0.15.12",
     "ty>=0.0.34",
 ]
+
+[tool.ruff]
+src = ["src/backend"]
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "src/backend/tests"]
+pythonpath = ["src/backend"]

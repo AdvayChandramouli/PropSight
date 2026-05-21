@@ -9,7 +9,15 @@ uv.lock
 .venv/
 .cursor/
 
+# Python tooling
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+*.py[cod]
+
+# Node
+node_modules/
+
 # Frontend (Next.js)
-src/frontend/node_modules/
 src/frontend/.next/
 src/frontend/out/
