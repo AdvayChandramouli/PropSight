@@ -5,7 +5,11 @@ config.yaml
 .DS_Store
 __pycache__/
 .python-version
-pyproject.toml
 uv.lock
 .venv/
 .cursor/
+
+# Frontend (Next.js)
+src/frontend/node_modules/
+src/frontend/.next/
+src/frontend/out/
