@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fef9f0;
+  --foreground: #1e293b;
+  --foreground-muted: #64748b;
+  --accent-pool: #14b8a6;
+  --accent-coral: #ff6b4a;
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-bg: rgba(255, 255, 255, 0.35);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* ── Light mesh gradient backdrop ── */
+.mesh-bg {
+  background-color: #fef9f0;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(254, 249, 231, 0.95) 0px, transparent 55%),
+    radial-gradient(at 45% 25%, rgba(249, 168, 212, 0.7) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(167, 139, 250, 0.6) 0px, transparent 50%),
+    radial-gradient(at 95% 85%, rgba(147, 197, 253, 0.55) 0px, transparent 50%),
+    radial-gradient(at 5% 90%, rgba(251, 207, 232, 0.5) 0px, transparent 50%);
+  background-size: 200% 200%;
+  animation: meshShift 22s ease infinite;
+}
+
+@keyframes meshShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ── Liquid glass design tokens (light theme) ── */
+@layer utilities {
+  .glass-surface {
+    @apply rounded-2xl border border-white/50 bg-white/35 backdrop-blur-md;
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.65),
+      0 8px 32px rgba(148, 163, 184, 0.18);
+  }
+
+  .glass-card {
+    @apply glass-surface transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-white/70 bg-white/45;
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.8),
+      0 12px 40px rgba(148, 163, 184, 0.22);
+  }
+
+  .glass-nav {
+    @apply border-b border-white/45 bg-white/40 backdrop-blur-md;
+    box-shadow:
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.5),
+      0 4px 24px rgba(148, 163, 184, 0.12);
+  }
+
+  .glass-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-white/60 bg-white/40 px-6 py-3 font-body font-semibold text-slate-800 backdrop-blur-md transition-all duration-300;
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.75),
+      0 4px 20px rgba(45, 212, 191, 0.2);
+  }
+
+  .glass-button:hover {
+    @apply scale-[1.02] border-pool/40 bg-white/55;
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.85),
+      0 8px 32px rgba(45, 212, 191, 0.28);
+  }
+
+  .glass-input {
+    @apply rounded-xl border border-white/50 bg-white/40 px-4 py-2 font-body text-sm text-slate-800 placeholder:text-slate-500 backdrop-blur-sm focus:border-pool/50 focus:outline-none focus:ring-2 focus:ring-pool/20;
+  }
+
+  .glass-spike {
+    @apply animate-pulseGlow border-coral/45 bg-coral/15;
+  }
+
+  .page-title {
+    @apply font-heading text-3xl tracking-wide text-slate-800 md:text-4xl;
+  }
+
+  .page-subtitle {
+    @apply font-body text-sm text-slate-600;
+  }
+
+  .text-body {
+    @apply text-slate-700;
+  }
+
+  .text-body-muted {
+    @apply text-slate-500;
+  }
+
+  .metric-accent-pool {
+    @apply border-pool/25 bg-pool/10;
+  }
+
+  .metric-accent-coral {
+    @apply border-coral/25 bg-coral/10;
+  }
+
+  .metric-accent-tropical {
+    @apply border-tropical/25 bg-tropical/10;
+  }
+}
+
+/* Price slider — pool teal to sunset coral gradient thumb */
+input[type="range"].price-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #14b8a6, #ff6b4a);
+}
+
+input[type="range"].price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 3px solid #ff6b4a;
+  cursor: pointer;
+  box-shadow:
+    0 2px 12px rgba(255, 107, 74, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+input[type="range"].price-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 3px solid #ff6b4a;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(255, 107, 74, 0.4);
+}
